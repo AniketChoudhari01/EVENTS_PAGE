@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event List with Sword Images Moving on X-Axis</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: black;
+            background-image: url('wp9302239-samurai-4k-pc-wallpapers.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            font-family: Poppins;
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Heading style */
+        .heading {
+            text-align: center;
+            color:wheat;
+            font-size: 40px;
+            font-family:'Courier New', Courier, monospace;
+            font-weight: bold;
+            
+            margin-top: 20px;
+            z-index: 3;
+            /* Ensure it's above everything */
+        }
+
+        /* Event container using Grid */
+        .event-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            /* Default for large screens (5 columns) */
+            gap: 20px;
+            margin-top: 50px;
+            width: 100%;
+            padding: 0 10px;
+            padding-bottom: 150px;
+            height: 100vh;
+            /* Fit within viewport */
+            overflow: hidden;
+            /* No scroll */
+        }
+
+        /* Individual event item */
+        .event {
+            position: relative;
+            width: auto;
+            height: 150px;
+            overflow: hidden;
+            border-radius: 2rem;
+            background-color: rgba(255, 254, 254, 0.153);
+        }
+
+        /* Sword image positioned behind the text */
+        .sword-image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(90deg);
+            width: 200px;
+            height: 160px;
+            transition: transform 1s ease, opacity 0.8s ease;
+            z-index: 1;
+        }
+
+        .sword-left {
+            transform: translate(-50%, -50%) rotate(90deg) translateY(-400%);
+        }
+
+        .sword-right {
+            transform: translate(-50%, -50%) rotate(270deg) translateY(-200%);
+        }
+
+        /* Hover effect to slide swords in and show text */
+        .event:hover .sword-left {
+            transform: translate(-50%, -50%) rotate(90deg) translateX(0);
+            opacity: 1;
+        }
+
+        .event:hover .sword-right {
+            transform: translate(-50%, -50%) rotate(270deg) translateX(0);
+            opacity: 1;
+        }
+
+        .event-text:hover {
+            color: black;
+        }
+
+        /* Event text */
+        .event-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: rgb(255, 255, 255);
+            font-size: 24px;
+            font-weight: bold;
+            z-index: 2;
+        }
+
+        /* Media query for tablet and mobile views */
+        @media (max-width: 1024px) {
+            .event-container {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                /* 3 columns for tablet/mobile */
+                grid-template-rows: repeat(5, auto);
+                /* 5 rows for tablet/mobile */
+                gap: 15px;
+                overflow-y: hidden;
+                height: 100vh;
+                /* Fit within viewport */
+                padding-bottom: 0;
+            }
+
+            .event {
+                height: 120px;
+            }
+
+            /* Adjust sword size for smaller screens */
+            .sword-image {
+                width: 150px;
+                height: 120px;
+            }
+
+            .event-text {
+                font-size: 18px;
+            }
+        }
+
+        /* Media query for desktop view */
+        @media (min-width: 1025px) {
+            .event-container {
+                display: grid;
+                grid-template-columns: repeat(5, 1fr);
+                /* 5 columns */
+                grid-template-rows: repeat(3, auto);
+                /* 3 rows */
+                gap: 20px;
+                height: 100vh;
+            }
+
+            .event {
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="heading">Club Events</div> <!-- Heading -->
+
+    <div class="event-container">
+        <!-- Event 1 -->
+        <div class="event">
+            <a href="#">
+                <img src="sword/sword.png" alt="Sword Left" class="sword-image sword-left">
+                <div class="event-text">Gaming</div>
+            </a>
+        </div>
+
+        <!-- Event 2 -->
+        <div class="event">
+            <a href="#">
+                <img src="sword/sword.png" alt="Sword Right" class="sword-image sword-right">
+                <div class="event-text">Fashion</div>
+            </a>
+        </div>
+
+        <!-- Event 3 -->
+        <div class="event">
+            <a href="#">
+                <img src="sword/sword.png" alt="Sword Left" class="sword-image sword-left">
+                <div class="event-text">Dance</div>
+            </a>
+        </div>
+
+        <!-- Event 4 -->
+        <div class="event">
+            <a href="#">
+                <img src="sword/sword.png" alt="Sword Right" class="sword-image sword-right">
+                <div class="event-text">Music</div>
+            </a>
+        </div>
+
+        <!-- Event 5 -->
+        <div class="event">
+            <a href="#">
+                <img src="sword/sword.png" alt="Sword Left" class="sword-image sword-left">
+                <div class="event-text">Art</div>
+            </a>
+        </div>
+
+        <!-- Event 6 -->
+        <div class="event">
+            <a href="#">
+                <img src="sword/sword.png" alt="Sword Right" class="sword-image sword-right">
+                <div class="event-text">Hindi</div>
+            </a>
+        </div>
+
+        <!-- Event 7 -->
+        <div class="event">
+            <a href="#">
+                <img src="sword/sword.png" alt="Sword Left" class="sword-image sword-left">
+                <div class="event-text">Tamil</div>
+            </a>
+        </div>
+
+        <!-- Event 8 -->
+        <div class="event">
+            <a href="#">
+                <img src="sword/sword.png" alt="Sword Right" class="sword-image sword-right">
+                <div class="event-text">Telugu</div>
+            </a>
+        </div>
+
+        <!-- Event 9 -->
+        <div class="event">
+            <a href="#">
+                <img src="sword/sword.png" alt="Sword Left" class="sword-image sword-left">
+                <div class="event-text">Photography</div>
+            </a>
+        </div>
+
+        <!-- Event 10 -->
+        <div class="event">
+            <a href="#">
+                <img src="sword/sword.png" alt="Sword Right" class="sword-image sword-right">
+                <div class="event-text">Theater</div>
+            </a>
+        </div>
+
+        <!-- Event 11 -->
+        <div class="event">
+            <a href="#">
+                <img src="sword/sword.png" alt="Sword Left" class="sword-image sword-left">
+                <div class="event-text">Cooking</div>
+            </a>
+        </div>
+
+        <!-- Event 12 -->
+        <div class="event">
+            <a href="#">
+                <img src="sword/sword.png" alt="Sword Right" class="sword-image sword-right">
+                <div class="event-text">Debate</div>
+            </a>
+        </div>
+
+        <!-- Event 13 -->
+        <div class="event">
+            <a href="#">
+                <img src="sword/sword.png" alt="Sword Left" class="sword-image sword-left">
+                <div class="event-text">Literature</div>
+            </a>
+        </div>
+
+        <!-- Event 14 -->
+        <div class="event">
+            <a href="#">
+                <img src="sword/sword.png" alt="Sword Right" class="sword-image sword-right">
+                <div class="event-text">Science</div>
+            </a>
+        </div>
+
+        <!-- Event 15 -->
+        <div class="event">
+            <a href="#">
+                <img src="sword/sword.png" alt="Sword Left" class="sword-image sword-left">
+                <div class="event-text">Technology</div>
+            </a>
+        </div>
+    </div>
+
+</body>
+
+</html>
